@@ -5,18 +5,21 @@ The objective of this analysis is to explore and better understand the dataset b
 
 Since 2001, ADEME has acquired this data annually from the UTAC (Union Technique de l'Automobile du Motocycle et du Cycle), the organization responsible for vehicle type approval before sale, in agreement with the Ministry of Sustainable Development.
 For each vehicle, the original data (transmitted by UTAC) is as follows:
+
 -fuel consumption
 -carbon dioxide (CO2) emissions
 -air pollutant emissions (regulated under the Euro standard)
 -all the technical characteristics of the vehicles (ranges, brands, models, CNIT number, energy type, etc.)
 
 # Technology Stack
+
 -Python: The primary programming language for data analysis.
 -Pandas: Used for data manipulation and preprocessing.
 -Matplotlib and Seaborn: Utilized for data visualization and plotting.
 -Scikit-Learn: Used for K-Means clustering analysis.
 
 # Exploratory Data Analysis (EDA)
+
 -Examination of how different energy types are represented across vehicles.
 -Analysis of the distribution of vehicle manufacturers in the dataset.
 -Investigation of engine power–related variables.
