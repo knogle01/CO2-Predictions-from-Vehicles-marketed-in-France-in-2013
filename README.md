@@ -7,27 +7,41 @@ This README provides an overview of the data analysis conducted on the Car Label
 
 The dataset was loaded from the file:
 
-cl_JUIN_2013-complet3.csv
+`cl_JUIN_2013-complet3.csv`
 
-It contains 44,850 vehicle records and includes information on a wide range of vehicle specifications and environmental indicators. After renaming the original French columns into English, the main variables used in the analysis included:
+It contains **44,850 vehicle records** and includes information on a wide range of **vehicle specifications and environmental indicators**.
 
-* **Brand:** Manufacturer of the vehicle
-* **Folder Model:** Vehicle model grouping
-* **Fuel:** Fuel or energy type
-* **Hybrid:** Indicates whether the vehicle is hybrid
-* **Administrative Power:** Fiscal horsepower
-* **Maximum Power (kW):** Engine power in kilowatts
-* **Gearbox:** Transmission type
-* **Combined Consumption (l/100km):** Fuel consumption measure
-* **CO2 (g/km):** Carbon dioxide emissions
-* **CO type 1 (g/km), HC (g/km), NOX (g/km), HC+NOX (g/km), Particles (g/km):** Pollutant emissions
-* **Empty Mass Euro Min / Max (kg):** Minimum and maximum empty mass
-* **Body:** Vehicle body type
-* **Range:** Vehicle segment
+After translating the original **French column names into English**, the main variables used in the analysis include:
 
-A new feature, Empty Mass Euro Avg (kg), was created by averaging the minimum and maximum empty mass values.
+### Vehicle Identification
+- `Brand` – Manufacturer of the vehicle  
+- `Folder Model` – Vehicle model grouping  
+- `Range` – Vehicle segment  
+- `Body` – Vehicle body type  
 
+### Powertrain and Technical Characteristics
+- `Fuel` – Fuel or energy type  
+- `Hybrid` – Indicates whether the vehicle is hybrid  
+- `Gearbox` – Transmission type  
+- `Administrative Power` – Fiscal horsepower  
+- `Maximum Power (kW)` – Engine power in kilowatts  
 
+### Fuel Consumption and Emissions
+- `Combined Consumption (l/100km)` – Fuel consumption  
+- `CO2 (g/km)` – Carbon dioxide emissions  
+- `CO type 1 (g/km)` – Carbon monoxide emissions  
+- `HC (g/km)` – Hydrocarbons  
+- `NOX (g/km)` – Nitrogen oxides  
+- `HC+NOX (g/km)` – Combined hydrocarbons and nitrogen oxides  
+- `Particles (g/km)` – Particulate emissions  
+
+### Vehicle Mass
+- `Empty Mass Euro Min (kg)` – Minimum empty mass  
+- `Empty Mass Euro Max (kg)` – Maximum empty mass  
+
+A new variable was created:
+
+- `Empty Mass Euro Avg (kg)` – Average vehicle mass calculated from the minimum and maximum empty mass values.
 
 # 2. Technology Stack
 
@@ -42,73 +56,86 @@ The analysis was conducted in Python using the following tools and libraries:
 
 
 
-# 3. Data Preprocessing
+# 3. Data Preprocessing and Cleaning
 
-Several preprocessing and cleaning steps were performed before analysis:
+Several preprocessing and data-cleaning steps were performed before the analysis.
 
-**3.1 Data import and column standardization**
+### 3.1 Data Import and Column Standardization
 
-The CSV file was loaded using latin1 encoding and semicolon separation. Original French column names were translated into English to improve readability and usability.
+- The CSV file was loaded using **`latin1` encoding** and **semicolon (`;`) separation**.
+- Original **French column names** were translated into **English** to improve readability and usability.
 
-**3.2 Missing value analysis**
+### 3.2 Missing Value Analysis
 
-A missing-value audit showed that some pollutant variables had substantial missingness, especially:
+A missing-value audit showed that several **pollutant variables** had substantial missing values, particularly:
 
-* HC (g/km)
-* HC+NOX (g/km)
-* Particles (g/km)
-* CO type 1 (g/km)
-* NOX (g/km)
+- `HC (g/km)`
+- `HC+NOX (g/km)`
+- `Particles (g/km)`
+- `CO type 1 (g/km)`
+- `NOX (g/km)`
 
-Consumption,  CO2 values had only a small number of missing observations.
+In contrast, **fuel consumption and CO₂ variables** contained only a **small number of missing observations**.
 
 <img width="1729" height="580" alt="Screenshot 2026-03-09 at 6 16 07 PM" src="https://github.com/user-attachments/assets/98df60fb-6d5e-4ccf-8836-6a10b50bac2c" />
 
-**3.3 Pollutant reconstruction**
+### 3.3 Pollutant Reconstruction
 
-Missing pollutant values were partially reconstructed using relationships between:
+Missing pollutant values were partially reconstructed using the relationship:
 
-HC+NOX = HC + NOX
+\[
+HC + NOX = HC + NOX
+\]
 
-This allowed the calculation of missing HC and NOX values where possible, improving dataset completeness.
+This allowed the calculation of missing **HC** and **NOX** values where possible, improving the **completeness of the dataset**.
 
-**3.4 Correction of inconsistent categorical entries**
+### 3.4 Correction of Inconsistent Categorical Entries
 
-Some erroneous gearbox and regulatory field (Field V9) values were corrected, such as:
-Gearbox:
-* N 0, N 1 → A 0
-* S 6 → D 6
+Some erroneous **gearbox** and **regulatory field (Field V9)** values were corrected.
 
+**Gearbox corrections:**
 
-**3.5 Electric vehicle adjustments**
+- `N 0`, `N 1` → `A 0`
+- `S 6` → `D 6`
 
-For electric vehicles (Fuel == "EL"), several emissions and fuel-consumption values were replaced with 0, since these vehicles do not produce tailpipe CO2 or combustion pollutants in the same way as fuel-powered vehicles.
+### 3.5 Electric Vehicle Adjustments
 
-**3.6 Mass aggregation**
+For **electric vehicles (`Fuel == "EL"`)**, several **emissions and fuel-consumption variables** were replaced with `0`, since these vehicles do not produce **tailpipe CO₂ or combustion-related pollutants**.
 
-The variables Empty Mass Euro Min (kg) and Empty Mass Euro Max (kg) were merged into:
+### 3.6 Mass Aggregation
 
-Empty Mass Euro Avg (kg)
+The variables:
 
-This average mass was then used throughout the analysis.
+- `Empty Mass Euro Min (kg)`
+- `Empty Mass Euro Max (kg)`
 
+were merged into a single variable:
+
+- **`Empty Mass Euro Avg (kg)`**
+
+This **average vehicle mass** was then used throughout the analysis.
 
 
 # 4. Exploratory Data Analysis (EDA)
 
 The exploratory analysis examined the structure and patterns of the dataset from several perspectives.  
 
-## 4.1 Summary Statistics
+## 4.1 Descriptive Overview
 
-A descriptive summary shows that the dataset contains **44,850 rows, 51 brands, 458 folder models**, and **13 fuel categories**. 
+The dataset contains:
 
-**The average values reported include:**  
+- **44,850** rows  
+- **51** brands  
+- **458** folder models  
+- **13** fuel categories  
 
-* **Administrative Power:** about 11.02  
-* **Maximum Power (kW):** about 124.78 kW  
-* **Combined Consumption (l/100km):**  about 7.71 l/100km  
-* **CO2 (g/km):**  about 198.74 g/km  
-* **Avg Empty Mass (kg):** about 2120.25 kg  
+#### Average Values
+
+- `Administrative Power`: **11.02**  
+- `Maximum Power (kW)`: **124.78 kW**  
+- `Combined Consumption (l/100km)`: **7.71 l/100km**  
+- `CO2 (g/km)`: **198.74 g/km**  
+- `Empty Mass Euro Avg (kg)`: **2120.25 kg**
 
 
 |index|Brand|Folder Model|Utac Model|Commerical Designation|cnit|Type Variant Version|Fuel|Hybrid|Administrative Power|Maximum Power \(kW\)|Gearbox|Urban Consumption \(l/100km\)|Extra Urban Consumption \(l/100km\)|Combined Consumption \(l/100km\)|CO2 \(g/km\)|CO type 1 \(g/km\)|HC \(g/km\)|NOX \(g/km\)|HC+NOX \(g/km\)|Particles \(g/km\)|
@@ -128,8 +155,9 @@ A descriptive summary shows that the dataset contains **44,850 rows, 51 brands, 
 
 ## 4.2 Distribution of Energy Types
 
-The dataset is dominated by diesel (GO) vehicles, followed by gasoline (ES). Other categories such as electric and hybrid vehicles are present but much less frequent, reflecting the structure of the market at the time of data collection.
+The dataset is dominated by **diesel (`GO`) vehicles**, followed by **gasoline (`ES`) vehicles**.
 
+Other categories, such as **electric** and **hybrid vehicles**, are present but **much less frequent**, reflecting the **market structure at the time of data collection**.
 
 <img width="1387" height="570" alt="Screenshot 2026-03-10 at 5 03 49 PM" src="https://github.com/user-attachments/assets/3199f892-ede8-43ee-9ad4-3fc02993c078" />
 
@@ -171,49 +199,54 @@ The dataset is dominated by diesel (GO) vehicles, followed by gasoline (ES). Oth
 
 ## 4.3 Distribution of Brands and Models
 
-The dataset includes 51 brands, but the distribution is highly uneven. Mercedes-Benz has by far the most observations (~38,000), mainly due to very frequent models such as Viano, Vito, and Sprinter.
+### Brand Distribution in the Dataset
 
-In terms of model diversity, Audi has the largest number of distinct models, followed by Volkswagen and Porsche, while Mercedes-Benz also offers a relatively wide range of models.
+The dataset contains **51 car brands**, but the distribution is **highly uneven**.
+
+- **Mercedes-Benz** has by far the **largest number of observations (~38,000)**, mainly driven by frequently registered models such as **Viano, Vito, and Sprinter**.
+
+### Model Diversity by Brand
+
+- **Audi** has the **highest number of distinct models**.
+- It is followed by **Volkswagen** and **Porsche**.
+- **Mercedes-Benz** also shows a **relatively broad model range**.
+
+**Key insight:**  
+While **Mercedes-Benz dominates the dataset in volume**, **Audi leads in model diversity**.
 
 <img width="1638" height="784" alt="Screenshot 2026-03-10 at 2 24 47 PM" src="https://github.com/user-attachments/assets/1a86cf2c-b703-49db-a182-bc1b2246ba47" />
 
 <img width="1619" height="776" alt="Screenshot 2026-03-10 at 5 37 44 PM" src="https://github.com/user-attachments/assets/ff978cd2-113e-4cf3-8f56-a7e5735a0b37" />
 
-## 4.4 Top 50 Models by Number of Observations
 
-<img width="1619" height="776" alt="Screenshot 2026-03-10 at 5 37 44 PM" src="https://github.com/user-attachments/assets/ff978cd2-113e-4cf3-8f56-a7e5735a0b37" />
+## 4.4 Brand-related Analysis
 
+### CO₂ Emissions by Brand
 
+There is **substantial variation in CO₂ emissions across brands**.
 
-## 4.4 CO2 Distribution
-
-**Grouping data by Brand and shows brand-level averages for:**
-
-* AvgCO2 (g/km)
-* Avg Empty Mass (kg)
-* Avg Maximum Power (kW)
-* Avg Combined Consumption (l/100km)
-* Vehicle Counts
-
-**These aggregates are visualized in scatterplots showing**
-
-* Average CO2 vs average maximum power by brand and number of observations
-* Average CO2 vs average empty mass by brand and number of observations**
-
-
-<img width="1638" height="784" alt="Screenshot 2026-03-10 at 2 25 33 PM" src="https://github.com/user-attachments/assets/78749ee5-6517-4ee0-9dac-f1e1037988c7" />
-
-
-The dataset also includes a wide range of vehicles, from low to zero-emission brands to very high-emission luxury and performance brands.
-
-**CO2 distribution by brand, fuel, and segment**
-
-Boxplots showed substantial variation in CO2 emissions across Brand, Energy Types and Vehicle ranges. This indicates that emissions are strongly influenced by both engineering decisions and vehicle class.
+- **Luxury and performance brands** (e.g., *Bentley, Lamborghini, Aston Martin*) generally show **higher median CO₂ emissions**.
+- **Mass-market brands** (e.g., *Toyota, Peugeot, Renault*) tend to have **lower medians and more moderate ranges**.
+- Some brands display **wide distributions**, indicating that they produce both **low-emission and high-emission vehicles**.
 
 <img width="1609" height="779" alt="Screenshot 2026-03-10 at 5 55 31 PM" src="https://github.com/user-attachments/assets/e0a14cc8-8ab4-4f0f-b464-71542025a7c1" />
-<img width="1609" height="779" alt="Screenshot 2026-03-10 at 5 55 58 PM" src="https://github.com/user-attachments/assets/ca344226-24d6-4325-ba1f-5ce1c215b125" />
-<img width="1609" height="779" alt="Screenshot 2026-03-10 at 5 56 55 PM" src="https://github.com/user-attachments/assets/ec3b9f63-4228-4a99-be42-0d1ff8d4ca69" />
 
+### Brand-Level Averages of Vehicle Performance and Emissions ###
+
+The figure presents **brand-level averages of vehicle characteristics** using two **bubble scatterplots**
+
+#### Key Observations
+
+- Both plots show a **positive relationship**:  
+  brands with **higher engine power** and **heavier vehicles** tend to have **higher CO₂ emissions**.
+- **Luxury and performance brands** (e.g., *Lamborghini, Bentley, Rolls-Royce, Maybach*) appear in the **upper-right region**, reflecting **high power/mass and high emissions**.
+- **Smaller or efficiency-focused brands** (e.g., *Smart*) show **lower power, lower mass, and lower emissions**.
+- **Electric manufacturers** such as *Tesla* appear **near zero CO₂ emissions**.
+
+**Key insight:**  
+Vehicle **power and weight are strongly associated with higher CO₂ emissions across brands**.
+
+<img width="1609" height="797" alt="Screenshot 2026-03-10 at 7 25 37 PM" src="https://github.com/user-attachments/assets/970c2f4f-0399-4f8b-be26-528c70de7153" />
 
 
 # Exploratory Data Analysis (EDA)
