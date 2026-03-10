@@ -94,11 +94,11 @@ Gearbox:
 * S 6 → D 6
 
 
-**3.5. Electric vehicle adjustments**
+**3.5 Electric vehicle adjustments**
 
 For electric vehicles (Fuel == "EL"), several emissions and fuel-consumption values were replaced with 0, since these vehicles do not produce tailpipe CO2 or combustion pollutants in the same way as fuel-powered vehicles.
 
-**3.6. Mass aggregation**
+**3.6 Mass aggregation**
 
 The variables Empty Mass Euro Min (kg) and Empty Mass Euro Max (kg) were merged into:
 
@@ -112,15 +112,17 @@ This average mass was then used throughout the analysis.
 
 The exploratory analysis examined the structure and patterns of the dataset from several perspectives.  
 
+## 4.1 Summary statistics**
+
 A descriptive summary shows that the dataset contains **44,850 rows, 51 brands, 458 folder models**, and **13 fuel categories**. 
 
 **The average values reported include:**  
 
 * **Administrative Power:** about 11.02  
-* **Maximum Power:** about 124.78 kW  
-* **Combined Consumption:** about 7.71 l/100km  
-* **CO2 emissions:** about 198.74 g/km  
-* **Average empty mass:** about 2120.25 kg  
+* **Maximum Power (kW):** about 124.78 kW  
+* **Combined Consumption (l/100km):**  about 7.71 l/100km  
+* **CO2 (g/km):**  about 198.74 g/km  
+* **Avg Empty Mass (kg):** about 2120.25 kg  
 
 
 |index|Brand|Folder Model|Utac Model|Commerical Designation|cnit|Type Variant Version|Fuel|Hybrid|Administrative Power|Maximum Power \(kW\)|Gearbox|Urban Consumption \(l/100km\)|Extra Urban Consumption \(l/100km\)|Combined Consumption \(l/100km\)|CO2 \(g/km\)|CO type 1 \(g/km\)|HC \(g/km\)|NOX \(g/km\)|HC+NOX \(g/km\)|Particles \(g/km\)|
@@ -138,28 +140,42 @@ A descriptive summary shows that the dataset contains **44,850 rows, 51 brands, 
 |max|NaN|NaN|NaN|NaN|NaN|NaN|NaN|NaN|81\.0|559\.3|NaN|41\.1|14\.9|24\.5|572\.0|0\.968|0\.143|1\.846|1\.86|0\.61|
 
 
-**4.1 Distribution of fuel types**
+## 4.2 Distribution of energy types**
 
 The dataset is dominated by diesel (GO) vehicles, followed by gasoline (ES). Other categories such as electric and hybrid vehicles are present but much less frequent, reflecting the structure of the market at the time of data collection.
 
+
 <img width="1052" height="728" alt="Screenshot 2026-03-09 at 6 24 50 PM" src="https://github.com/user-attachments/assets/ddfbf583-03e9-41f3-adbd-a29e9497ed30" />
 
-**4.2 Distribution of Brands and Models**
+
+## 4.3 Distribution of Brands and Models**
 
 The dataset covers 51 brands and hundreds of models. Some brands (e.g MERCEDES-BENZ) appear much more frequently than others, and certain manufacturers also offer a wider variety of models.
 
-<img width="1603" height="792" alt="Screenshot 2026-03-09 at 6 50 52 PM" src="https://github.com/user-attachments/assets/342d743c-54ae-464b-812c-161dbb55306a" />
 
-**Summary statistics**
+<img width="1638" height="784" alt="Screenshot 2026-03-10 at 2 24 47 PM" src="https://github.com/user-attachments/assets/1a86cf2c-b703-49db-a182-bc1b2246ba47" />
 
-Key numeric variables showed the following broad patterns:
 
-Mean CO2 emissions: about 198.7 g/km
-Mean maximum power: about 124.8 kW
-Mean combined consumption: about 7.71 l/100km
-Mean empty mass: about 2120 kg
+## 4.4 CO2 distribution by brand, fuel, and vehicle range (segments)
 
-The dataset also includes a wide range of vehicles, from low-emission compact cars to very high-emission luxury and performance vehicles.
+**Grouping data by Brand and shows brand-level averages for:**
+
+* AvgCO2 (g/km)
+* Avg Empty Mass (kg)
+* Avg Maximum Power (kW)
+* Avg Combined Consumption (l/100km)
+* Vehicle Counts
+
+**These aggregates are visualized in scatterplots showing**
+
+* Average CO2 vs average maximum power by brand and number of observations
+* Average CO2 vs average empty mass by brand and number of observations**
+
+
+<img width="1638" height="784" alt="Screenshot 2026-03-10 at 2 25 33 PM" src="https://github.com/user-attachments/assets/78749ee5-6517-4ee0-9dac-f1e1037988c7" />
+
+
+The dataset also includes a wide range of vehicles, from low to zero-emission brands to very high-emission luxury and performance brands.
 
 **CO2 distribution by brand, fuel, and segment**
 
