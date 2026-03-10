@@ -27,21 +27,7 @@ It contains 44,850 vehicle records and includes information on a wide range of v
 
 A new feature, Empty Mass Euro Avg (kg), was created by averaging the minimum and maximum empty mass values.
 
-**Fuel Categories are labled as followed:**  
 
-* **ES:** unleaded 95 Gasoline vehicles  
-* **GO:** diesel vehicles
-* **FE:** E85 vehicles
-* **EH:** gasoline (ES)/electric hybrid (non-rechargeable)
-* **EE:** gasoline (ES)/electric hybrid (rechargeable)
-* **GH:** diesel/electric hybrid (non-rechargeable)
-* **GL:** diesel/electric hybrid (rechargeable)
-* **EL:** electric vehicles
-* **ES / GP:** dual fuel Gasoline (ES)/liquefied petroleum gas (GPL) (Gasoline (ES)consumption data)
-* **GP / ES:** dual fuel Gasoline (ES)/liquefied petroleum gas (GPL) (GPL consumption data)
-* **ES/GN:** (GNV) (Gasoline (ES) consumption data)
-
-**Gearbox Types are labled as followed:**
 
 # 2. Technology Stack
 
@@ -112,7 +98,7 @@ This average mass was then used throughout the analysis.
 
 The exploratory analysis examined the structure and patterns of the dataset from several perspectives.  
 
-## 4.1 Summary statistics**
+## 4.1 Summary Statistics
 
 A descriptive summary shows that the dataset contains **44,850 rows, 51 brands, 458 folder models**, and **13 fuel categories**. 
 
@@ -140,19 +126,20 @@ A descriptive summary shows that the dataset contains **44,850 rows, 51 brands, 
 |max|NaN|NaN|NaN|NaN|NaN|NaN|NaN|NaN|81\.0|559\.3|NaN|41\.1|14\.9|24\.5|572\.0|0\.968|0\.143|1\.846|1\.86|0\.61|
 
 
-## 4.2 Distribution of energy types**
+## 4.2 Distribution of Energy Types
 
 The dataset is dominated by diesel (GO) vehicles, followed by gasoline (ES). Other categories such as electric and hybrid vehicles are present but much less frequent, reflecting the structure of the market at the time of data collection.
 
 
 <img width="1387" height="570" alt="Screenshot 2026-03-10 at 5 03 49 PM" src="https://github.com/user-attachments/assets/3199f892-ede8-43ee-9ad4-3fc02993c078" />
-<p><sub>Fuel Categories are labeled as follows:</sub></p>
+
+**Terminology for energy types**
 
 <table>
 <tr>
 <td width="50%">
 
-<sub>
+<small>
 <ul>
 <li><b>ES</b>: unleaded 95 gasoline vehicles</li>
 <li><b>GO</b>: diesel vehicles</li>
@@ -160,35 +147,45 @@ The dataset is dominated by diesel (GO) vehicles, followed by gasoline (ES). Oth
 <li><b>EH</b>: gasoline (ES) / electric hybrid (non-rechargeable)</li>
 <li><b>EE</b>: gasoline (ES) / electric hybrid (rechargeable)</li>
 <li><b>GH</b>: diesel / electric hybrid (non-rechargeable)</li>
+<li><b>GL</b>: diesel / electric hybrid (rechargeable)</li>
+<li><b>EL</b>: electric</li>
 </ul>
-</sub>
+</small>
 
 </td>
 <td width="50%">
 
-<sub>
+<small>
 <ul>
-<li><b>GL</b>: diesel / electric hybrid (rechargeable)</li>
-<li><b>EL</b>: electric vehicles</li>
 <li><b>ES / GP</b>: dual fuel gasoline (ES) / liquefied petroleum gas (GPL) (gasoline consumption data)</li>
 <li><b>GP / ES</b>: dual fuel gasoline (ES) / liquefied petroleum gas (GPL) (GPL consumption data)</li>
 <li><b>ES / GN</b>: natural gas (GNV) (gasoline consumption data)</li>
+<li><b>GN / ES</b>: dual fuel gasoline (ES) / natural gas for vehicles (GNV) (GNV consumption)</li>
+<li><b>GN</b>: single fuel natural gas for vehicles (GNV consumption data)</li>
 </ul>
-</sub>
+</small>
 
 </td>
 </tr>
 </table>
 
-## 4.3 Distribution of Brands and Models**
+## 4.3 Distribution of Brands and Models
 
-The dataset covers 51 brands and hundreds of models. Some brands (e.g MERCEDES-BENZ) appear much more frequently than others, and certain manufacturers also offer a wider variety of models.
+The dataset includes 51 brands, but the distribution is highly uneven. Mercedes-Benz has by far the most observations (~38,000), mainly due to very frequent models such as Viano, Vito, and Sprinter.
 
+In terms of model diversity, Audi has the largest number of distinct models, followed by Volkswagen and Porsche, while Mercedes-Benz also offers a relatively wide range of models.
 
 <img width="1638" height="784" alt="Screenshot 2026-03-10 at 2 24 47 PM" src="https://github.com/user-attachments/assets/1a86cf2c-b703-49db-a182-bc1b2246ba47" />
 
+<img width="1619" height="776" alt="Screenshot 2026-03-10 at 5 37 44 PM" src="https://github.com/user-attachments/assets/ff978cd2-113e-4cf3-8f56-a7e5735a0b37" />
 
-## 4.4 CO2 distribution by brand, fuel, and vehicle range (segments)
+## 4.4 Top 50 Models by Number of Observations
+
+<img width="1619" height="776" alt="Screenshot 2026-03-10 at 5 37 44 PM" src="https://github.com/user-attachments/assets/ff978cd2-113e-4cf3-8f56-a7e5735a0b37" />
+
+
+
+## 4.4 CO2 Distribution
 
 **Grouping data by Brand and shows brand-level averages for:**
 
@@ -211,16 +208,11 @@ The dataset also includes a wide range of vehicles, from low to zero-emission br
 
 **CO2 distribution by brand, fuel, and segment**
 
-Boxplots showed substantial variation in CO2 emissions across:
+Boxplots showed substantial variation in CO2 emissions across Brand, Energy Types and Vehicle ranges. This indicates that emissions are strongly influenced by both engineering decisions and vehicle class.
 
-Brands
-
-Fuel types
-
-Vehicle ranges / segments
-
-This indicates that emissions are strongly influenced by both engineering decisions and vehicle class.
-
+<img width="1609" height="779" alt="Screenshot 2026-03-10 at 5 55 31 PM" src="https://github.com/user-attachments/assets/e0a14cc8-8ab4-4f0f-b464-71542025a7c1" />
+<img width="1609" height="779" alt="Screenshot 2026-03-10 at 5 55 58 PM" src="https://github.com/user-attachments/assets/ca344226-24d6-4325-ba1f-5ce1c215b125" />
+<img width="1609" height="779" alt="Screenshot 2026-03-10 at 5 56 55 PM" src="https://github.com/user-attachments/assets/ec3b9f63-4228-4a99-be42-0d1ff8d4ca69" />
 
 
 
