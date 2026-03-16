@@ -73,22 +73,6 @@ The dataset contains:
 - `CO2 (g/km)`: **198.74 g/km**  
 - `Empty Mass Euro Avg (kg)`: **2120.25 kg**
 
-
-|index|Brand|Folder Model|Utac Model|Commerical Designation|cnit|Type Variant Version|Fuel|Hybrid|Administrative Power|Maximum Power \(kW\)|Gearbox|Urban Consumption \(l/100km\)|Extra Urban Consumption \(l/100km\)|Combined Consumption \(l/100km\)|CO2 \(g/km\)|CO type 1 \(g/km\)|HC \(g/km\)|NOX \(g/km\)|HC+NOX \(g/km\)|Particles \(g/km\)|
-|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-|count|44850|44850|44850|44850|44850|44850|44850|44850|44850\.0|44850\.0|44850|44847\.0|44847\.0|44850\.0|44850\.0|44586\.0|44586\.0|44547\.0|44586\.0|41747\.0|
-|unique|51|458|419|3582|44191|28781|13|2|NaN|NaN|13|NaN|NaN|NaN|NaN|NaN|NaN|NaN|NaN|NaN|
-|top|MERCEDES-BENZ|VIANO|VIANO|VIANO 2\.2 CDI|M10LNCVP000R207|263AXG1B05|GO|non|NaN|NaN|M 6|NaN|NaN|NaN|NaN|NaN|NaN|NaN|NaN|NaN|
-|freq|38450|14031|14031|5874|16|32|37778|44593|NaN|NaN|19364|NaN|NaN|NaN|NaN|NaN|NaN|NaN|NaN|NaN|
-|mean|NaN|NaN|NaN|NaN|NaN|NaN|NaN|NaN|11\.018996655518395|124\.78083389074695|NaN|9\.698303119495174|6\.561922759604879|7\.709544035674469|198\.7379264214047|0\.1533268088637689|0\.022389081774548063|0\.31183959413652995|0\.33395590544116993|0\.000959843581574724|
-|std|NaN|NaN|NaN|NaN|NaN|NaN|NaN|NaN|5\.554474663340535|49\.15880390757593|NaN|2\.3823957247243936|1\.2112840762678807|1\.6125365011865005|39\.43598817742501|0\.13899707813825268|0\.014255190181952957|0\.4631107921136125|0\.4582791644245911|0\.006465942752424883|
-|min|NaN|NaN|NaN|NaN|NaN|NaN|NaN|NaN|1\.0|10\.0|NaN|0\.0|0\.0|0\.0|0\.0|0\.0|-0\.05399999999999999|0\.001|0\.0|0\.0|
-|25%|NaN|NaN|NaN|NaN|NaN|NaN|NaN|NaN|9\.0|100\.0|NaN|8\.8|6\.3|7\.2|187\.0|0\.046|0\.01100000000000001|0\.158|0\.18|0\.0|
-|50%|NaN|NaN|NaN|NaN|NaN|NaN|NaN|NaN|10\.0|120\.0|NaN|9\.7|6\.7|7\.7|203\.0|0\.093|0\.01899999999999999|0\.197|0\.216|0\.001|
-|75%|NaN|NaN|NaN|NaN|NaN|NaN|NaN|NaN|11\.0|125\.0|NaN|10\.7|7\.1|8\.4|221\.0|0\.222|0\.03|0\.228|0\.253|0\.001|
-|max|NaN|NaN|NaN|NaN|NaN|NaN|NaN|NaN|81\.0|559\.3|NaN|41\.1|14\.9|24\.5|572\.0|0\.968|0\.143|1\.846|1\.86|0\.61|
-
-
 ## 3.2 Distribution of Brands and Models
 
 ### Brand Distribution in the Dataset
@@ -110,10 +94,12 @@ While **Mercedes-Benz dominates the dataset in volume**, **Audi leads in model d
 
 <img width="1619" height="776" alt="Screenshot 2026-03-10 at 5 37 44 PM" src="https://github.com/user-attachments/assets/ff978cd2-113e-4cf3-8f56-a7e5735a0b37" />
 
+## 3.3 Fuel Distribution
+
 
 ## 3.3 Reducing Brand Imbalance through Deduplication
 
-To avoid bias from repeatedly occurring vehicle configurations, the dataset was reduced to **unique non-electric vehicle specifications**. Many vehicles appear multiple times in the original dataset because the same technical configuration can be listed across different entries. Keeping all of them would overrepresent certain brands or models.
+To avoid bias from repeatedly occurring vehicle configurations, the dataset was reduced to **unique vehicle specifications**. Many vehicles appear multiple times in the original dataset because the same technical configuration can be listed across different entries. Keeping all of them would overrepresent certain brands or models.
 
 To address this, duplicates were removed based on the following variables that define a vehicle’s technical specification:
 
