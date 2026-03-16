@@ -1,5 +1,8 @@
-# CO2 and pollutant emissions from vehicles sold in France
-This README provides an overview of the data analysis conducted on the Car Labelling dataset from ADEME France. The analysis focuses on understanding vehicle characteristics, cleaning and preprocessing the dataset, performing exploratory data analysis (EDA), identifying patterns through clustering, and building predictive models for CO2 emissions. The study highlights how fuel type, vehicle mass, engine power, gearbox, and body type relate to fuel consumption and environmental impact.
+# CO2 emissions from vehicles  marketed in France
+
+This project analyzes the **ADEME Car Labelling dataset** to study the factors influencing **vehicle CO₂ emissions** in France. The workflow includes **data cleaning, preprocessing, exploratory data analysis (EDA), clustering, and predictive modeling**.
+
+The analysis explores how **vehicle mass, engine power, fuel type, gearbox, and body type** relate to CO₂ emissions. **Clustering techniques** are used to identify distinct vehicle segments based on power, mass, body, fuel, gearbox, while **machine learning models** are developed to predict CO₂ emissions and determine the most influential vehicle characteristics.
 
 # 1. Dataset Description
 
@@ -97,7 +100,7 @@ While **Mercedes-Benz dominates the dataset in volume**, **Audi leads in model d
 
 <img width="1619" height="776" alt="Screenshot 2026-03-10 at 5 37 44 PM" src="https://github.com/user-attachments/assets/ff978cd2-113e-4cf3-8f56-a7e5735a0b37" />
 
-## 3.3 Fuel Distribution
+## 3.3 Fuel and Body Type Distribution
 ### Distribution of Body Types and Fuel Types
 
 - **Minibuses dominate the dataset**, with far more entries than any other body type.  
