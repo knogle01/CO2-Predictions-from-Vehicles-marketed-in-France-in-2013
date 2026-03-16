@@ -100,8 +100,8 @@ While **Mercedes-Benz dominates the dataset in volume**, **Audi leads in model d
 
 <img width="1619" height="776" alt="Screenshot 2026-03-10 at 5 37 44 PM" src="https://github.com/user-attachments/assets/ff978cd2-113e-4cf3-8f56-a7e5735a0b37" />
 
-## 3.3 Fuel and Body Type Distribution
-### Distribution of Body Types and Fuel Types
+
+## 3.3 Distribution Fuel and Body Type 
 
 - **Minibuses dominate the dataset**, with far more entries than any other body type.  
 - Other body types such as **berlines (sedans), breaks (wagons), and SUVs** appear but at much lower frequencies.  
