@@ -95,6 +95,17 @@ While **Mercedes-Benz dominates the dataset in volume**, **Audi leads in model d
 <img width="1619" height="776" alt="Screenshot 2026-03-10 at 5 37 44 PM" src="https://github.com/user-attachments/assets/ff978cd2-113e-4cf3-8f56-a7e5735a0b37" />
 
 ## 3.3 Fuel Distribution
+### Distribution of Body Types and Fuel Types
+
+- **Minibuses dominate the dataset**, with far more entries than any other body type.  
+- Other body types such as **berlines (sedans), breaks (wagons), and SUVs** appear but at much lower frequencies.  
+- Smaller segments like **coupes, cabriolets, and compact vehicles** are relatively rare.
+
+- In terms of fuel, **diesel (`GO`) vehicles overwhelmingly dominate the dataset**, followed by **gasoline (`ES`) vehicles**.  
+- **Hybrid, electric, and alternative fuels** appear only in **very small numbers**, reflecting the market structure at the time of data collection.
+
+**Key insight:**  
+The dataset is strongly skewed toward **diesel-powered minibuses and conventional combustion vehicles**.
 <img width="1584" height="784" alt="body fuel" src="https://github.com/user-attachments/assets/d5b78398-eef8-4bc2-bf63-bca01587cfed" />
 
 
