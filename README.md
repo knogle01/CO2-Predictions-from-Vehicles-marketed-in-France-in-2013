@@ -236,8 +236,7 @@ To address this, duplicates were removed based on the following variables that d
 Two observations are considered identical if all of these variables have the same values. In such cases, only one observation is retained.
 This deduplication step reduces **brand imbalance** and ensures that the subsequent analysis focuses on **distinct vehicle configurations** rather than repeated instances of the same specification.
 
-<img width="889" height="551" alt="Screenshot 2026-03-11 at 9 35 40 PM" src="https://github.com/user-attachments/assets/7f30d2d8-a6bc-4bac-be06-3a4c5fbb2f9f" />
-
+<img width="791" height="410" alt="Screenshot 2026-03-16 at 3 12 58 PM" src="https://github.com/user-attachments/assets/9bd72a07-e5a6-4d04-8f6a-d9cc9e8777ab" />
 
 ## 4.4 Distribution of Key Vehicle Characteristics
 
