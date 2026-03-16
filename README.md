@@ -95,9 +95,10 @@ While **Mercedes-Benz dominates the dataset in volume**, **Audi leads in model d
 <img width="1619" height="776" alt="Screenshot 2026-03-10 at 5 37 44 PM" src="https://github.com/user-attachments/assets/ff978cd2-113e-4cf3-8f56-a7e5735a0b37" />
 
 ## 3.3 Fuel Distribution
+<img width="1584" height="784" alt="body fuel" src="https://github.com/user-attachments/assets/d5b78398-eef8-4bc2-bf63-bca01587cfed" />
 
 
-## 3.3 Reducing Brand Imbalance through Deduplication
+# 4 Reducing Brand Imbalance through Deduplication
 
 To avoid bias from repeatedly occurring vehicle configurations, the dataset was reduced to **unique vehicle specifications**. Many vehicles appear multiple times in the original dataset because the same technical configuration can be listed across different entries. Keeping all of them would overrepresent certain brands or models.
 
@@ -117,11 +118,11 @@ This deduplication step reduces **brand imbalance** and ensures that the subsequ
 <img width="791" height="410" alt="Screenshot 2026-03-16 at 3 12 58 PM" src="https://github.com/user-attachments/assets/9bd72a07-e5a6-4d04-8f6a-d9cc9e8777ab" />
 
 
-## 3.4 Power and Weight Effects on Emissions and Fuel Consumption (after Deduplication)
+# 5 Power and Weight Effects on Emissions and Fuel Consumption (after Deduplication)
 
 The plots examine how `Empty Mass Euro Avg (kg)` and `Maximum Power (kW)` relate to `CO2 (g/km)`.
 
-### Relationship Empty Mass (kg) vs. CO₂ (g/km)
+## 5.1 Relationship Empty Mass (kg) vs. CO₂ (g/km)
 
 - There is a **moderate positive correlation** between `empty_mass_euro_avg` and `CO₂ (g/km)` *(r = 0.6817, R² = 0.4648)*.
 - **Heavier vehicles generally produce higher CO₂ emissions**, as indicated by the upward regression trend.
@@ -131,7 +132,7 @@ The plots examine how `Empty Mass Euro Avg (kg)` and `Maximum Power (kW)` relate
 - Overall, `empty_mass_euro_avg` is a **significant but not exclusive predictor** of `CO2 (g/km)`.
 <img width="1584" height="783" alt="Mass vs  CO2" src="https://github.com/user-attachments/assets/c74361e1-f862-4af4-a5d2-928c952ac5aa" />
 
-### Relationship Maximum Power (kW) vs. CO2 (g/km)
+### 5.2 Relationship Maximum Power (kW) vs. CO2 (g/km)
 
 - There is a **moderate positive correlation** between `maximum_power (kw)` and `CO₂ (g/km)` *(r = 0.6703, R² = 0.4493)*.
 - Vehicles with **higher engine power generally produce higher CO₂ emissions**, as shown by the upward regression trend.
@@ -143,9 +144,9 @@ The plots examine how `Empty Mass Euro Avg (kg)` and `Maximum Power (kW)` relate
 <img width="1584" height="783" alt="Power vs  CO2" src="https://github.com/user-attachments/assets/a5d045f6-f934-461f-ad3f-ac65367fa806" />
 
 
-## 4. Clustering Analysis Results
+## 6. Clustering Analysis Results
 
-### 4.1  Clustering Dashboard (2×2 Overview)
+### 6.1  Clustering Dashboard (2×2 Overview)
 
 The dashboard summarizes the **size, power, mass, and emission differences across clusters**.
 
@@ -154,28 +155,28 @@ The dashboard summarizes the **size, power, mass, and emission differences acros
   `cluster 2` shows the **lowest `co2 (g/km)`**, `cluster 0` **moderate**, `cluster 1` **higher**, and `cluster 3` the **highest emissions with greater variability**.
 - **Power–mass relationship:**  
   Clusters are mainly separated by **vehicle size and performance**:
-  - `cluster 2` → **low `maximum_power (kw)` and low `empty_mass_euro_avg (kg)`**
+  - `cluster 2` → **efficiency vehicles**
   - `cluster 0` → **mid-range vehicles**
   - `cluster 1` → **utility vehicles**
-  - `cluster 3` → **high-power, heavier vehicles**
+  - `cluster 3` → **performance vehicles**
 - **Mean emissions vs fleet average (~171 g/km):**  
   `cluster 2` and `cluster 0` are **below average**, while `cluster 1` and `cluster 3` are **above average**.
 <img width="1584" height="784" alt="Clustering Dashboard" src="https://github.com/user-attachments/assets/031042d3-7586-4153-a786-00d2466d54dd" />
 <img width="1780" height="584" alt="Categorical Features Distribution" src="https://github.com/user-attachments/assets/df4cd8db-7de7-4553-bbc2-1f40d27202a3" />
 ---
 
-### 4.2 Cluster Profiles (Radar Chart & Heatmap)
+### 6.2 Cluster Profiles (Radar Chart & Heatmap)
 
-The radar chart and heatmap show the **normalized cluster centroids** for  
-`maximum_power (kw)`, `empty_mass_euro_avg (kg)`, and `co2 (g/km)`.
+The radar chart and heatmap show the **normalized cluster** for  
+`Maximum Power (kW)`, `Empty Mass Euro Avg (kg)`, and `CO2 (g/km)`.
 
 
 <img width="1552" height="818" alt="Vehicle Cluster Profiles" src="https://github.com/user-attachments/assets/cd9709c4-1c90-4faa-b60a-dccfa6e04e80" />
 
-### Key Insight
+### 6.3 Key Insight
 
 The clustering identifies **four distinct vehicle segments**, primarily structured by  
-`maximum_power (kw)`, `empty_mass_euro_avg (kg)`, and resulting `co2 (g/km)` emissions.  
+`Maximum power (kw)`, `Empty Mass Euro Avg (kg)`, and resulting `CO2 (g/km)` emissions.  
 As **vehicle power and mass increase, average emissions increase as well**, producing clearly differentiated emission profiles across clusters.
 
 
@@ -212,6 +213,7 @@ After comparing models, the **Random Forest** model was further analyzed:
 <img width="1474" height="884" alt="Shap plot" src="https://github.com/user-attachments/assets/8e969318-d129-4fff-8a9c-b3e2a7af3559" />
 
 - Finally, a **single decision tree** from the Random Forest was visualized to illustrate how predictions are generated
+<img width="1556" height="884" alt="Decision Tree" src="https://github.com/user-attachments/assets/b420908f-81bb-48dd-98e6-33c9da49caa1" />
 
 Overall, this step combines **model comparison and explainability** to better understand how vehicle characteristics influence `CO2 (g/km)` emissions.
 
