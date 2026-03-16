@@ -1,4 +1,4 @@
-# CO2 emissions from vehicles  marketed in France
+# CO2 Emissions from Vehicles Marketed in France
 
 This project analyzes the **ADEME Car Labelling dataset** to study the factors influencing **vehicle CO₂ emissions** in France. The workflow includes **data cleaning, preprocessing, exploratory data analysis (EDA), clustering, and predictive modeling**.
 
