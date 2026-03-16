@@ -167,9 +167,9 @@ The dashboard summarizes the **size, power, mass, and emission differences acros
   `cluster 2` shows the **lowest `co2 (g/km)`**, `cluster 0` **moderate**, `cluster 1` **higher**, and `cluster 3` the **highest emissions with greater variability**.
 - **Power–mass relationship:**  
   Clusters are mainly separated by **vehicle size and performance**:
-  - `cluster 2` → **efficiency vehicles**
   - `cluster 0` → **mid-range vehicles**
   - `cluster 1` → **utility vehicles**
+  - `cluster 2` → **efficiency vehicles**
   - `cluster 3` → **performance vehicles**
 - **Mean emissions vs fleet average (~171 g/km):**  
   `cluster 2` and `cluster 0` are **below average**, while `cluster 1` and `cluster 3` are **above average**.
