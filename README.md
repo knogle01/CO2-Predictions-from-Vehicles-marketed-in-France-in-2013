@@ -3,9 +3,12 @@ This README provides an overview of the data analysis conducted on the Car Label
 
 # 1. Dataset Description
 
-The dataset was loaded from the file:
+The dataset used in this analysis comes from the French open data portal **data.gouv.fr**.
 
-`cl_JUIN_2013-complet3.csv`
+- **Dataset:** CO₂ and pollutant emissions of vehicles sold in France  
+- **Provider:** ADEME (Agence de la transition écologique)
+
+🔗 [View the dataset on data.gouv.fr](https://www.data.gouv.fr/datasets/emissions-de-co2-et-de-polluants-des-vehicules-commercialises-en-france?resource_id=6ff09b59-84ca-4346-a8d1-3587ed94da15)
 
 It contains **44,850 vehicle records** and includes information on a wide range of **vehicle specifications and environmental indicators**.
 
