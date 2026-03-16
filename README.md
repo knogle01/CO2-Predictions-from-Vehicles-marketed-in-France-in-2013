@@ -163,7 +163,7 @@ The plots examine how `Empty Mass Euro Avg (kg)` and `Maximum Power (kW)` relate
 
 ## 6. Clustering Analysis Results
 
-### 6.1  Clustering Dashboard (2×2 Overview)
+### 6.1  Clustering Dashboard 
 
 The dashboard summarizes the **size, power, mass, and emission differences across clusters**.
 
