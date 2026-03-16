@@ -52,54 +52,11 @@ The analysis was conducted in Python using the following tools and libraries:
 * **Scikit-learn:** Clustering and predictive modeling  
 * **Google Colab:** Execution environment with Google Drive integration  
 
-
-# 3. Data Preprocessing and Cleaning
-
-Several preprocessing and data-cleaning steps were performed before the analysis.
-
-### 3.1 Data Import and Column Standardization
-
-- The CSV file was loaded using **`latin1` encoding** and **semicolon (`;`) separation**.
-- Original **French column names** were translated into **English** to improve readability and usability.
-
-### 3.2 Missing Value Analysis
-
-A missing-value audit showed that several **pollutant variables** had substantial missing values, particularly:
-
-- `HC (g/km)`
-- `HC+NOX (g/km)`
-- `Particles (g/km)`
-- `CO type 1 (g/km)`
-- `NOX (g/km)`
-
-In contrast, **fuel consumption and CO₂ variables** contained only a **small number of missing observations**.
-
-<img width="1729" height="580" alt="Screenshot 2026-03-09 at 6 16 07 PM" src="https://github.com/user-attachments/assets/98df60fb-6d5e-4ccf-8836-6a10b50bac2c" />
-
-
-### 3.3 Electric Vehicle Adjustments
-
-For **electric vehicles (`Fuel == "EL"`)**, several **emissions and fuel-consumption variables** were replaced with `0`, since these vehicles do not produce **tailpipe CO₂ or combustion-related pollutants**.
-
-### 3.4 Mass Aggregation
-
-The variables:
-
-- `Empty Mass Euro Min (kg)`
-- `Empty Mass Euro Max (kg)`
-
-were merged into a single variable:
-
-- **`Empty Mass Euro Avg (kg)`**
-
-This **average vehicle mass** was then used throughout the analysis.
-
-
-# 4. Exploratory Data Analysis (EDA)
+# 3. Exploratory Data Analysis (EDA)
 
 The exploratory analysis examined the structure and patterns of the dataset from several perspectives.  
 
-## 4.1 Descriptive Overview
+## 3.1 Descriptive Overview
 
 The dataset contains:
 
@@ -132,7 +89,7 @@ The dataset contains:
 |max|NaN|NaN|NaN|NaN|NaN|NaN|NaN|NaN|81\.0|559\.3|NaN|41\.1|14\.9|24\.5|572\.0|0\.968|0\.143|1\.846|1\.86|0\.61|
 
 
-## 4.2 Distribution of Brands and Models
+## 3.2 Distribution of Brands and Models
 
 ### Brand Distribution in the Dataset
 
@@ -154,7 +111,7 @@ While **Mercedes-Benz dominates the dataset in volume**, **Audi leads in model d
 <img width="1619" height="776" alt="Screenshot 2026-03-10 at 5 37 44 PM" src="https://github.com/user-attachments/assets/ff978cd2-113e-4cf3-8f56-a7e5735a0b37" />
 
 
-## 4.3 Reducing Brand Imbalance through Deduplication
+## 3.3 Reducing Brand Imbalance through Deduplication
 
 To avoid bias from repeatedly occurring vehicle configurations, the dataset was reduced to **unique non-electric vehicle specifications**. Many vehicles appear multiple times in the original dataset because the same technical configuration can be listed across different entries. Keeping all of them would overrepresent certain brands or models.
 
@@ -173,19 +130,8 @@ This deduplication step reduces **brand imbalance** and ensures that the subsequ
 
 <img width="791" height="410" alt="Screenshot 2026-03-16 at 3 12 58 PM" src="https://github.com/user-attachments/assets/9bd72a07-e5a6-4d04-8f6a-d9cc9e8777ab" />
 
-## 4.4 Distribution of Key Vehicle Characteristics
 
-The histograms illustrate the distributions of several key vehicle characteristics:
-
-- Most vehicles have `CO2 (g/km)` values around **180–230 g/km**.
-- `Empty Mass Euro Avg (kg)` is typically between **1900–2200 kg**.
-- `Maximum Power (kW)` mostly ranges from **80–140 kW**.
-- `Combined Consumption (l/100km)` is concentrated around **6–9 l/100 km**.
-
-<img width="1609" height="794" alt="Screenshot 2026-03-10 at 7 40 56 PM" src="https://github.com/user-attachments/assets/7e5a81a2-e3b1-4ad6-842e-43a99074c0ff" />
-
-
-## 4.5 Power and Weight Effects on Emissions and Fuel Consumption
+## 3.4 Power and Weight Effects on Emissions and Fuel Consumption (after Deduplication)
 
 The plots examine how `Empty Mass Euro Avg (kg)` and `Maximum Power (kW)` relate to `CO2 (g/km)`.
 
@@ -211,10 +157,9 @@ The plots examine how `Empty Mass Euro Avg (kg)` and `Maximum Power (kW)` relate
 <img width="1584" height="783" alt="Power vs  CO2" src="https://github.com/user-attachments/assets/a5d045f6-f934-461f-ad3f-ac65367fa806" />
 
 
+## 4. Clustering Analysis Results
 
-## Clustering Analysis Results
-
-### Clustering Dashboard (2×2 Overview)
+### 4.1  Clustering Dashboard (2×2 Overview)
 
 The dashboard summarizes the **size, power, mass, and emission differences across clusters**.
 
@@ -233,9 +178,7 @@ The dashboard summarizes the **size, power, mass, and emission differences acros
 <img width="1780" height="584" alt="Categorical Features Distribution" src="https://github.com/user-attachments/assets/df4cd8db-7de7-4553-bbc2-1f40d27202a3" />
 ---
 
-
-
-### 2. Cluster Profiles (Radar Chart & Heatmap)
+### 4.2 Cluster Profiles (Radar Chart & Heatmap)
 
 The radar chart and heatmap show the **normalized cluster centroids** for  
 `maximum_power (kw)`, `empty_mass_euro_avg (kg)`, and `co2 (g/km)`.
@@ -243,22 +186,14 @@ The radar chart and heatmap show the **normalized cluster centroids** for
 
 <img width="1552" height="818" alt="Vehicle Cluster Profiles" src="https://github.com/user-attachments/assets/cd9709c4-1c90-4faa-b60a-dccfa6e04e80" />
 
-
----
-
-
-
----
-
 ### Key Insight
 
 The clustering identifies **four distinct vehicle segments**, primarily structured by  
 `maximum_power (kw)`, `empty_mass_euro_avg (kg)`, and resulting `co2 (g/km)` emissions.  
 As **vehicle power and mass increase, average emissions increase as well**, producing clearly differentiated emission profiles across clusters.
 
-### Predictive Modeling and Interpretation
 
-### Regression Modeling and Interpretation
+# 5. Predictive Modeling and Interpretation
 
 A regression pipeline was built to **predict `CO2 (g/km)`** using the features  
 `Body`, `Fuel`,`Gearbox`, `Maximum Power (kW)` and `Empty Mass Euro Avg (kg)`
