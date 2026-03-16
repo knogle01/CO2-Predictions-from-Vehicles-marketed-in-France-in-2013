@@ -134,7 +134,7 @@ This deduplication step reduces **brand imbalance** and ensures that the subsequ
 <img width="791" height="410" alt="Screenshot 2026-03-16 at 3 12 58 PM" src="https://github.com/user-attachments/assets/9bd72a07-e5a6-4d04-8f6a-d9cc9e8777ab" />
 
 
-# 5 Power and Weight Effects on Emissions and Fuel Consumption (after Deduplication)
+# 5 Power and Weight Effects on CO₂ Emissions (after Deduplication)
 
 The plots examine how `Empty Mass Euro Avg (kg)` and `Maximum Power (kW)` relate to `CO2 (g/km)`.
 
