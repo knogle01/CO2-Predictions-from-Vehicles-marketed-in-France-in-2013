@@ -20,7 +20,6 @@ After translating the original **French column names into English**, the main va
 ### Vehicle Identification
 - `Brand` – Manufacturer of the vehicle  
 - `Folder Model` – Vehicle model grouping  
-- `Range` – Vehicle segment  
 - `Body` – Vehicle body type  
 
 ### Powertrain and Technical Characteristics
@@ -33,11 +32,6 @@ After translating the original **French column names into English**, the main va
 ### Fuel Consumption and Emissions
 - `Combined Consumption (l/100km)` – Fuel consumption  
 - `CO2 (g/km)` – Carbon dioxide emissions  
-- `CO type 1 (g/km)` – Carbon monoxide emissions  
-- `HC (g/km)` – Hydrocarbons  
-- `NOX (g/km)` – Nitrogen oxides  
-- `HC+NOX (g/km)` – Combined hydrocarbons and nitrogen oxides  
-- `Particles (g/km)` – Particulate emissions  
 
 ### Vehicle Mass
 - `Empty Mass Euro Min (kg)` – Minimum empty mass  
