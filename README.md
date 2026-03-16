@@ -126,6 +126,7 @@ To address this, duplicates were removed based on the following variables that d
 - `Gearbox`
 - `Maximum Power (kW)`
 - `Empty Mass Euro Avg (kg)`
+- `Combined Consumption (l/100km)`
 - `CO2 (g/km)`
 
 Two observations are considered identical if all of these variables have the same values. In such cases, only one observation is retained.
