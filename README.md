@@ -121,6 +121,7 @@ To avoid bias from repeatedly occurring vehicle configurations, the dataset was 
 To address this, duplicates were removed based on the following variables that define a vehicle’s technical specification:
 
 - `Brand`
+- `Folder Model`
 - `Fuel`
 - `Body`
 - `Gearbox`
