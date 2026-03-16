@@ -2,7 +2,7 @@
 
 This project analyzes the **ADEME Car Labelling dataset** to study the factors influencing **vehicle CO₂ emissions** in France. The workflow includes **data cleaning, preprocessing, exploratory data analysis (EDA), clustering, and predictive modeling**.
 
-The analysis explores how **vehicle mass, engine power, fuel type, gearbox, and body type** relate to CO₂ emissions. **Clustering techniques** are used to identify distinct vehicle segments based on power, mass, body, fuel, gearbox, while **machine learning models** are developed to predict CO₂ emissions and determine the most influential vehicle characteristics.
+The analysis explores how **vehicle mass, engine power, fuel type, gearbox, and body type** relate to CO₂ emissions. **Clustering techniques** are used to identify distinct vehicle segments, while **machine learning models** are developed to predict CO₂ emissions and determine the most influential vehicle characteristics.
 
 # 1. Dataset Description
 
