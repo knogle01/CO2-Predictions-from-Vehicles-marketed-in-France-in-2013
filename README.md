@@ -1,8 +1,6 @@
 # CO2 and pollutant emissions from vehicles sold in France
 This README provides an overview of the data analysis conducted on the Car Labelling dataset from ADEME France. The analysis focuses on understanding vehicle characteristics, cleaning and preprocessing the dataset, performing exploratory data analysis (EDA), identifying patterns through clustering, and building predictive models for CO2 emissions. The study highlights how fuel type, vehicle mass, engine power, gearbox, and body type relate to fuel consumption and environmental impact.
 
-
-
 # 1. Dataset Description
 
 The dataset was loaded from the file:
@@ -281,28 +279,27 @@ Vehicle **power and weight are strongly associated with higher CO₂ emissions a
 
 ## 4.5 Power and Weight Effects on Emissions and Fuel Consumption
 
-The plots examine how `Empty Mass Euro Avg (kg)` and `Maximum Power (kW)` relate to `CO2 (g/km)` and `Combined Consumption (l/100km)`.
+The plots examine how `Empty Mass Euro Avg (kg)` and `Maximum Power (kW)` relate to `CO2 (g/km)`.
 
-#### Key Insights
-- Both `Empty Mass Euro Avg (kg)` and `Maximum Power (kW)` show a **positive relationship** with `CO2 (g/km)` and `Combined Consumption (l/100km)`.
-- **Heavier and more powerful vehicles** generally produce **higher emissions and consume more fuel**.
-- The relationships appear **nonlinear**, with stronger increases at higher weight and power levels.
-- Clustering reveals groups of **lighter, efficient vehicles** and **heavier or more powerful vehicles with higher emissions**.
-- A smaller outlier cluster (Cluster 3) likely represents **luxary or sports cars**, characterized by **very high engine power, fuel consumption, and CO₂ emissions**.
+### Relationship Empty Mass (kg) vs. CO₂ (g/km)
 
-<img width="1609" height="784" alt="Screenshot 2026-03-11 at 4 28 45 PM" src="https://github.com/user-attachments/assets/0035e37c-1be4-472e-b753-44bc4b4b5fb2" />
+- There is a **moderate positive correlation** between `empty_mass_euro_avg` and `CO₂ (g/km)` *(r = 0.6817, R² = 0.4648)*.
+- **Heavier vehicles generally produce higher CO₂ emissions**, as indicated by the upward regression trend.
+- The **highest observation density** occurs around **1400–1800 kg** for `empty_mass_euro_avg` and **120–200 g/km** for `CO2 (g/km)`.
+- The distribution of `empty_mass_euro_avg` peaks around **1500–1800 kg**, with relatively fewer vehicles above **2500 kg**.
+- The distribution of `CO2 (g/km)` is **right-skewed**, with most vehicles between **120–220 g/km** and a few high-emission outliers.
+- Overall, `empty_mass_euro_avg` is a **significant but not exclusive predictor** of `CO2 (g/km)`.
+<img width="1584" height="783" alt="Mass vs  CO2" src="https://github.com/user-attachments/assets/c74361e1-f862-4af4-a5d2-928c952ac5aa" />
 
-<img width="1609" height="784" alt="Screenshot 2026-03-11 at 4 46 05 PM" src="https://github.com/user-attachments/assets/7f79269c-c85d-49df-beb7-b3eddf24ec35" />
+### Relationship Maximum Power (kW) vs. CO2 (g/km)
 
-  
-<img width="1609" height="731" alt="Screenshot 2026-03-11 at 6 01 04 PM" src="https://github.com/user-attachments/assets/a08e3694-f5ff-4be4-9e11-4a27fc8033a9" />
-<img width="1609" height="778" alt="Screenshot 2026-03-11 at 6 22 39 PM" src="https://github.com/user-attachments/assets/a898fc1f-324a-4316-81d1-79c0e2c250ff" />
+- There is a **moderate positive correlation** between `maximum_power (kw)` and `CO₂ (g/km)` *(r = 0.6703, R² = 0.4493)*.
+- Vehicles with **higher engine power generally produce higher CO₂ emissions**, as shown by the upward regression trend.
+- The **highest observation density** occurs around **80–130 kW** for `maximum_power (kw)` and **110–180 g/km** for `co2 (g/km)`.
+- The distribution of `Maximum Power (kW)` is **right-skewed**, with most vehicles clustered between **70–140 kW** and fewer high-power vehicles above **250 kW**.
+- The distribution of `CO2 (g/km)` is also **right-skewed**, with most vehicles between **120–220 g/km** and a small number of high-emission outliers.
+- Overall, `maximum_power (kw)` is a **relevant but not sole predictor** of `CO2 (g/km)`.
 
-# Key Findings
-Some key findings from the analysis include:  
+<img width="1584" height="783" alt="Power vs  CO2" src="https://github.com/user-attachments/assets/a5d045f6-f934-461f-ad3f-ac65367fa806" />
 
-The distribution of energy types showed a significant presence of diesel and gasoline vehicles.  
-Certain vehicle brands were more prevalent in the dataset.  
-Power-related variables exhibited various distributions and relationships.  
-CO2 emissions varied across different vehicle brands and energy types.  
-One noteworthy observation is the strong correlation between weight and both consumption and CO2 emissions. Heavier vehicles tend to have higher consumption and emissions, emphasizing the importance of vehicle weight in environmental impact assessments.
+
