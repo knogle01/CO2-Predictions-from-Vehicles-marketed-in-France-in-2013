@@ -100,7 +100,6 @@ While **Mercedes-Benz dominates the dataset in volume**, **Audi leads in model d
 - **Minibuses dominate the dataset**, with far more entries than any other body type.  
 - Other body types such as **berlines (sedans), breaks (wagons), and SUVs** appear but at much lower frequencies.  
 - Smaller segments like **coupes, cabriolets, and compact vehicles** are relatively rare.
-
 - In terms of fuel, **diesel (`GO`) vehicles overwhelmingly dominate the dataset**, followed by **gasoline (`ES`) vehicles**.  
 - **Hybrid, electric, and alternative fuels** appear only in **very small numbers**, reflecting the market structure at the time of data collection.
 
