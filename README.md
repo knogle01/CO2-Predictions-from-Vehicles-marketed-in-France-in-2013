@@ -303,3 +303,49 @@ The plots examine how `Empty Mass Euro Avg (kg)` and `Maximum Power (kW)` relate
 <img width="1584" height="783" alt="Power vs  CO2" src="https://github.com/user-attachments/assets/a5d045f6-f934-461f-ad3f-ac65367fa806" />
 
 
+
+## Clustering Analysis Results
+
+### Clustering Dashboard (2×2 Overview)
+
+The dashboard summarizes the **size, power, mass, and emission differences across clusters**.
+
+- **Cluster size:** `cluster 0` is the **largest**, followed by `cluster 1` and `cluster 2`, while `cluster 3` is the **smallest** segment.
+- **CO₂ distribution:**  
+  `cluster 2` shows the **lowest `co2 (g/km)`**, `cluster 0` **moderate**, `cluster 1` **higher**, and `cluster 3` the **highest emissions with greater variability**.
+- **Power–mass relationship:**  
+  Clusters are mainly separated by **vehicle size and performance**:
+  - `cluster 2` → **low `maximum_power (kw)` and low `empty_mass_euro_avg (kg)`**
+  - `cluster 0` → **mid-range vehicles**
+  - `cluster 1` → **utility vehicles**
+  - `cluster 3` → **high-power, heavier vehicles**
+- **Mean emissions vs fleet average (~171 g/km):**  
+  `cluster 2` and `cluster 0` are **below average**, while `cluster 1` and `cluster 3` are **above average**.
+<img width="1584" height="784" alt="Clustering Dashboard" src="https://github.com/user-attachments/assets/031042d3-7586-4153-a786-00d2466d54dd" />
+<img width="1780" height="584" alt="Categorical Features Distribution" src="https://github.com/user-attachments/assets/df4cd8db-7de7-4553-bbc2-1f40d27202a3" />
+---
+
+
+
+### 2. Cluster Profiles (Radar Chart & Heatmap)
+
+The radar chart and heatmap show the **normalized cluster centroids** for  
+`maximum_power (kw)`, `empty_mass_euro_avg (kg)`, and `co2 (g/km)`.
+
+
+<img width="1552" height="818" alt="Vehicle Cluster Profiles" src="https://github.com/user-attachments/assets/cd9709c4-1c90-4faa-b60a-dccfa6e04e80" />
+
+
+---
+
+
+
+---
+
+### Key Insight
+
+The clustering identifies **four distinct vehicle segments**, primarily structured by  
+`maximum_power (kw)`, `empty_mass_euro_avg (kg)`, and resulting `co2 (g/km)` emissions.  
+As **vehicle power and mass increase, average emissions increase as well**, producing clearly differentiated emission profiles across clusters.
+
+
