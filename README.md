@@ -348,4 +348,41 @@ The clustering identifies **four distinct vehicle segments**, primarily structur
 `maximum_power (kw)`, `empty_mass_euro_avg (kg)`, and resulting `co2 (g/km)` emissions.  
 As **vehicle power and mass increase, average emissions increase as well**, producing clearly differentiated emission profiles across clusters.
 
+### Predictive Modeling and Interpretation
+
+### Regression Modeling and Interpretation
+
+A regression pipeline was built to **predict `CO2 (g/km)`** using the features  
+`Body`, `Fuel`,`Gearbox`, `Maximum Power (kW)` and `Empty Mass Euro Avg (kg)`
+
+- First, the modeling dataset was prepared from `df_unique`, missing values were removed, and the data was split into **training and test sets**.
+- Two **preprocessing strategies** were applied:
+  - **One-hot encoding + scaling** for linear models
+  - **One-hot encoding with numeric passthrough** for tree-based models
+- Five regression models were trained and compared:
+  - `Linear Regression`
+  - `Ridge`
+  - `Lasso`
+  - `Random Forest`
+  - `Gradient Boosting`
+
+Model performance was evaluated using **`R²` and `MAE`** on both training and test data to assess **predictive accuracy and potential overfitting**.
+
+<img width="1583" height="919" alt="Model Performance" src="https://github.com/user-attachments/assets/0ee5e16f-4a05-46e7-afc6-5d5353c9b83d" />
+
+
+After comparing models, the **Random Forest** model was further analyzed:
+
+- **Feature importance** identifies the most influential predictors of `CO2 (g/km)`
+<img width="1584" height="884" alt="Feature Importance" src="https://github.com/user-attachments/assets/74f6e159-8fb4-4399-aaf2-d8929dd3c25c" />
+
+- **Partial Dependence Plots (PDPs)** show how `Maximum Power (kW)`, `Empty Mass Euro Avg (kg)`, `Fuel`, `Body`, and `Gearbox` influence predicted emissions
+<img width="1584" height="919" alt="Partial Dependency Plots" src="https://github.com/user-attachments/assets/b34c0d5c-5c26-4af5-8756-0764996ec55b" />
+
+- A **SHAP summary plot** explains the contribution and direction of each feature across observations
+<img width="1474" height="884" alt="Shap plot" src="https://github.com/user-attachments/assets/8e969318-d129-4fff-8a9c-b3e2a7af3559" />
+
+- Finally, a **single decision tree** from the Random Forest was visualized to illustrate how predictions are generated
+
+Overall, this step combines **model comparison and explainability** to better understand how vehicle characteristics influence `CO2 (g/km)` emissions.
 
