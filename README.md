@@ -53,7 +53,6 @@ The analysis was conducted in Python using the following tools and libraries:
 * **Google Colab:** Execution environment with Google Drive integration  
 
 
-
 # 3. Data Preprocessing and Cleaning
 
 Several preprocessing and data-cleaning steps were performed before the analysis.
@@ -77,30 +76,12 @@ In contrast, **fuel consumption and CO₂ variables** contained only a **small n
 
 <img width="1729" height="580" alt="Screenshot 2026-03-09 at 6 16 07 PM" src="https://github.com/user-attachments/assets/98df60fb-6d5e-4ccf-8836-6a10b50bac2c" />
 
-### 3.3 Pollutant Reconstruction
 
-Missing pollutant values were partially reconstructed using the relationship:
-
-\[
-HC + NOX = HC + NOX
-\]
-
-This allowed the calculation of missing **HC** and **NOX** values where possible, improving the **completeness of the dataset**.
-
-### 3.4 Correction of Inconsistent Categorical Entries
-
-Some erroneous **gearbox** and **regulatory field (Field V9)** values were corrected.
-
-**Gearbox corrections:**
-
-- `N 0`, `N 1` → `A 0`
-- `S 6` → `D 6`
-
-### 3.5 Electric Vehicle Adjustments
+### 3.3 Electric Vehicle Adjustments
 
 For **electric vehicles (`Fuel == "EL"`)**, several **emissions and fuel-consumption variables** were replaced with `0`, since these vehicles do not produce **tailpipe CO₂ or combustion-related pollutants**.
 
-### 3.6 Mass Aggregation
+### 3.4 Mass Aggregation
 
 The variables:
 
@@ -151,51 +132,7 @@ The dataset contains:
 |max|NaN|NaN|NaN|NaN|NaN|NaN|NaN|NaN|81\.0|559\.3|NaN|41\.1|14\.9|24\.5|572\.0|0\.968|0\.143|1\.846|1\.86|0\.61|
 
 
-## 4.2 Distribution of Energy Types
-
-The dataset is dominated by **diesel (`GO`) vehicles**, followed by **gasoline (`ES`) vehicles**.
-
-Other categories, such as **electric** and **hybrid vehicles**, are present but **much less frequent**, reflecting the **market structure at the time of data collection**.
-
-<img width="1387" height="570" alt="Screenshot 2026-03-10 at 5 03 49 PM" src="https://github.com/user-attachments/assets/3199f892-ede8-43ee-9ad4-3fc02993c078" />
-
-**Terminology for energy types**
-
-<table>
-<tr>
-<td width="50%">
-
-<small>
-<ul>
-<li><b>ES</b>: unleaded 95 gasoline vehicles</li>
-<li><b>GO</b>: diesel vehicles</li>
-<li><b>FE</b>: E85 vehicles</li>
-<li><b>EH</b>: gasoline (ES) / electric hybrid (non-rechargeable)</li>
-<li><b>EE</b>: gasoline (ES) / electric hybrid (rechargeable)</li>
-<li><b>GH</b>: diesel / electric hybrid (non-rechargeable)</li>
-<li><b>GL</b>: diesel / electric hybrid (rechargeable)</li>
-<li><b>EL</b>: electric</li>
-</ul>
-</small>
-
-</td>
-<td width="50%">
-
-<small>
-<ul>
-<li><b>ES / GP</b>: dual fuel gasoline (ES) / liquefied petroleum gas (GPL) (gasoline consumption data)</li>
-<li><b>GP / ES</b>: dual fuel gasoline (ES) / liquefied petroleum gas (GPL) (GPL consumption data)</li>
-<li><b>ES / GN</b>: natural gas (GNV) (gasoline consumption data)</li>
-<li><b>GN / ES</b>: dual fuel gasoline (ES) / natural gas for vehicles (GNV) (GNV consumption)</li>
-<li><b>GN</b>: single fuel natural gas for vehicles (GNV consumption data)</li>
-</ul>
-</small>
-
-</td>
-</tr>
-</table>
-
-## 4.3 Distribution of Brands and Models
+## 4.2 Distribution of Brands and Models
 
 ### Brand Distribution in the Dataset
 
@@ -217,7 +154,7 @@ While **Mercedes-Benz dominates the dataset in volume**, **Audi leads in model d
 <img width="1619" height="776" alt="Screenshot 2026-03-10 at 5 37 44 PM" src="https://github.com/user-attachments/assets/ff978cd2-113e-4cf3-8f56-a7e5735a0b37" />
 
 
-### Reducing Brand Imbalance through Deduplication
+## 4.3 Reducing Brand Imbalance through Deduplication
 
 To avoid bias from repeatedly occurring vehicle configurations, the dataset was reduced to **unique non-electric vehicle specifications**. Many vehicles appear multiple times in the original dataset because the same technical configuration can be listed across different entries. Keeping all of them would overrepresent certain brands or models.
 
@@ -247,35 +184,6 @@ The histograms illustrate the distributions of several key vehicle characteristi
 
 <img width="1609" height="794" alt="Screenshot 2026-03-10 at 7 40 56 PM" src="https://github.com/user-attachments/assets/7e5a81a2-e3b1-4ad6-842e-43a99074c0ff" />
 
-
-## 4.5 Brand-related CO₂ Emissions 
-
-### Distribution CO₂ Emissions by Brand
-
-There is **substantial variation in CO₂ emissions across brands**.
-
-- **Luxury and performance brands** (e.g., *Bentley, Lamborghini, Aston Martin*) generally show **higher median CO₂ emissions**.
-- **Mass-market brands** (e.g., *Toyota, Peugeot, Renault*) tend to have **lower medians and more moderate ranges**.
-- Some brands display **wide distributions**, indicating that they produce both **low-emission and high-emission vehicles**.
-
-<img width="1609" height="779" alt="Screenshot 2026-03-10 at 5 55 31 PM" src="https://github.com/user-attachments/assets/e0a14cc8-8ab4-4f0f-b464-71542025a7c1" />
-
-### Brand-Level Averages of Vehicle Performance and Emissions ###
-
-The figure presents **brand-level averages of vehicle characteristics** using two **bubble scatterplots**
-
-#### Key Observations
-
-- Both plots show a **positive relationship**:  
-  brands with **higher engine power** and **heavier vehicles** tend to have **higher CO₂ emissions**.
-- **Luxury and performance brands** (e.g., *Lamborghini, Bentley, Rolls-Royce, Maybach*) appear in the **upper-right region**, reflecting **high power/mass and high emissions**.
-- **Smaller or efficiency-focused brands** (e.g., *Smart*) show **lower power, lower mass, and lower emissions**.
-- **Electric manufacturers** such as *Tesla* appear **near zero CO₂ emissions**.
-
-**Key insight:**  
-Vehicle **power and weight are strongly associated with higher CO₂ emissions across brands**.
-
-<img width="1609" height="797" alt="Screenshot 2026-03-10 at 7 25 37 PM" src="https://github.com/user-attachments/assets/970c2f4f-0399-4f8b-be26-528c70de7153" />
 
 ## 4.5 Power and Weight Effects on Emissions and Fuel Consumption
 
